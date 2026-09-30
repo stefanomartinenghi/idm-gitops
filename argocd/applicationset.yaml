@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: idm-environments
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - environment: local-test
+            namespace: idm-test
+          - environment: local-qual
+            namespace: idm-qual
+          - environment: local-prod
+            namespace: idm-prod
+  template:
+    metadata:
+      name: "idm-{{environment}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/stefanomartinenghi/idm-gitops.git
+        targetRevision: main
+        path: "apps/idm/overlays/{{environment}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
