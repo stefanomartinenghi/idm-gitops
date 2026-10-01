@@ -11,6 +11,8 @@ spec:
             namespace: idm-test
           - environment: local-qual
             namespace: idm-qual
+          - environment: local-prod
+            namespace: idm-prod
   template:
     metadata:
       name: "idm-{{environment}}"
