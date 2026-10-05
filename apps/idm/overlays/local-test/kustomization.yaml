@@ -23,6 +23,12 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/env/0/value
         value: local-test
+      - op: replace
+        path: /spec/template/spec/containers/0/readinessProbe/httpGet/path
+        value: /actuator/health/readiness
+      - op: replace
+        path: /spec/template/spec/containers/0/livenessProbe/httpGet/path
+        value: /actuator/health/liveness
   - target:
       kind: Ingress
       name: idm-app
