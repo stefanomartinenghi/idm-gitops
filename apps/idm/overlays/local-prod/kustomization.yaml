@@ -23,3 +23,10 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/env/0/value
         value: local-prod
+  - target:
+      kind: Ingress
+      name: idm-app
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: idm-prod.localhost
