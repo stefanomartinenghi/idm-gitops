@@ -9,7 +9,7 @@ resources:
 images:
   - name: localhost:5001/idm-app
     newName: localhost:5001/idm-app
-    newTag: 8c439a24bbbbba156649c103eab6f31033785b07
+    newTag: 90d1ac3793d3348625a50b910a3cbbb3c289d970
 
 replicas:
   - name: idm-app
