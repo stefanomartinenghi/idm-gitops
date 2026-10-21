@@ -9,14 +9,15 @@ spec:
   update:
     strategy: Auto
   db:
-    vendor: postgres
-    host: keycloak-postgresql
-    database: keycloak
+    vendor: mysql
+    host: 10.166.18.126
+    port: 3306
+    database: idmccno_keycloak26
     usernameSecret:
-      name: keycloak-database
+      name: keycloak-mysql-database
       key: username
     passwordSecret:
-      name: keycloak-database
+      name: keycloak-mysql-database
       key: password
   http:
     httpEnabled: true

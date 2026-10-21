@@ -9,7 +9,7 @@ resources:
 images:
   - name: localhost:5001/keycloak-26-app
     newName: localhost:5001/keycloak-26-app
-    newTag: eb9e235f7cefcd924e063496b0f2418d62142464
+    newTag: 5caf1c48e9f9d2ff31f176f4aa3e883575be5fa8
 
 patches:
   - target:
