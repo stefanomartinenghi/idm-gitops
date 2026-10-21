@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - applicationset.yaml
   - ingress-nginx.yaml
+  - keycloak-operator.yaml
+  - keycloak-applicationset.yaml

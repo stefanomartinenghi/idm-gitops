@@ -1,0 +1,43 @@
+apiVersion: k8s.keycloak.org/v2beta1
+kind: Keycloak
+metadata:
+  name: keycloak
+spec:
+  instances: 1
+  image: localhost:5001/keycloak-26-app:bootstrap
+  startOptimized: true
+  update:
+    strategy: Auto
+  db:
+    vendor: postgres
+    host: keycloak-postgresql
+    database: keycloak
+    usernameSecret:
+      name: keycloak-database
+      key: username
+    passwordSecret:
+      name: keycloak-database
+      key: password
+  http:
+    httpEnabled: true
+  hostname:
+    hostname: keycloak.localhost
+    strict: false
+  proxy:
+    headers: xforwarded
+  ingress:
+    enabled: true
+    className: nginx
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi
+  additionalOptions:
+    - name: health-enabled
+      value: "true"
+    - name: metrics-enabled
+      value: "true"
+

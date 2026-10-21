@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: keycloak-environments
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-10"
+spec:
+  generators:
+    - list:
+        elements:
+          - environment: local-test
+            namespace: keycloak-test
+  template:
+    metadata:
+      name: "keycloak-{{environment}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/stefanomartinenghi/idm-gitops.git
+        targetRevision: main
+        path: "apps/keycloak/overlays/{{environment}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - SkipDryRunOnMissingResource=true
+
