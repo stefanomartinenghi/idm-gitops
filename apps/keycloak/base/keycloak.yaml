@@ -7,7 +7,7 @@ spec:
   image: localhost:5001/keycloak-26-app:bootstrap
   startOptimized: true
   update:
-    strategy: Auto
+    strategy: RecreateOnImageChange
   db:
     vendor: mysql
     host: 10.166.18.126
