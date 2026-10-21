@@ -20,7 +20,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/hostname/hostname
-        value: keycloak-prod.localhost
+        value: http://keycloak-prod.localhost:8080
       - op: replace
         path: /spec/instances
         value: 2

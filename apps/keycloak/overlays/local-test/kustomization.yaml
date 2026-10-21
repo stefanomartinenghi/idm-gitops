@@ -20,5 +20,5 @@ patches:
     patch: |-
       - op: replace
         path: /spec/hostname/hostname
-        value: keycloak-test.localhost
+        value: http://keycloak-test.localhost:8080
 
