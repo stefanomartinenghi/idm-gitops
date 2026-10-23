@@ -27,6 +27,9 @@ Keycloak usa il database MySQL esterno `idmccno_keycloak26` raggiungibile su
 `10.166.18.126:3306`. Il repository contiene solamente la referenza al database; le
 credenziali non sono versionate.
 
+La VPN/rete aziendale deve essere attiva e la porta `10.166.18.126:3306` deve essere
+raggiungibile sia da WSL sia dai pod del cluster prima che Keycloak possa diventare Ready.
+
 Prima di attivare un ambiente creare nel relativo namespace il Secret atteso dal
 Keycloak Operator:
 
